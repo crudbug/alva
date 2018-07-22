@@ -35,6 +35,10 @@ export class PatternStringProperty extends PatternPropertyBase<string | undefine
 		}
 	}
 
+	public toDisk(): Types.SerializedStringProperty {
+		return this.toJSON();
+	}
+
 	public toJSON(): Types.SerializedStringProperty {
 		return {
 			contextId: this.contextId,

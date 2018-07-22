@@ -601,13 +601,16 @@ export class Element {
 		this.selected = selected;
 	}
 
-	public toDisk(): Types.SerializedElement {
-		const serialized = this.toJSON();
-		serialized.dragged = false;
-		serialized.highlighted = false;
-		serialized.placeholderHighlighted = false;
-		serialized.selected = false;
-		return serialized;
+	public toDisk(): Types.SavedElement {
+		return {
+			containerId: this.containerId,
+			contentIds: this.contentIds,
+			id: this.id,
+			name: this.name,
+			patternId: this.patternId,
+			propertyIds: this.getProperties().map(p => p.getId()),
+			role: serializeRole(this.role)
+		};
 	}
 
 	@Mobx.action

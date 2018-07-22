@@ -14,6 +14,8 @@ export type SerializedUserStorePropertyType = 'string' | 'page';
 
 export type SerializedUserStoreActionType = 'noop' | 'set' | 'set-page' | 'open-external';
 
+export type SavedUserStoreProperty = SerializedUserStoreProperty;
+
 export interface SerializedUserStoreProperty {
 	id: string;
 	name: string;
@@ -29,6 +31,16 @@ export interface SerializedUserStoreAction {
 	type: SerializedUserStoreActionType;
 }
 
+export type SavedUserStoreAction = SerializedUserStoreAction;
+
+export interface SavedUserStore {
+	actionIds: string[];
+	currentPagePropertyId: string;
+	id: string;
+	propertyIds: string[];
+	referenceIds: string[];
+}
+
 export interface SerializedUserStore {
 	actions: SerializedUserStoreAction[];
 	currentPageProperty: SerializedUserStoreProperty;
@@ -42,6 +54,12 @@ export type UserStoreActionPayload = string;
 export interface SerializedUserStoreReference {
 	id: string;
 	open: boolean;
+	elementPropertyId: string;
+	userStorePropertyId: string | undefined;
+}
+
+export interface SavedUserStoreReference {
+	id: string;
 	elementPropertyId: string;
 	userStorePropertyId: string | undefined;
 }

@@ -79,6 +79,10 @@ export class PatternSlot {
 		return this.type;
 	}
 
+	public toDisk(): Types.SavedPatternSlot {
+		return this.toJSON();
+	}
+
 	public toJSON(): Types.SerializedPatternSlot {
 		return {
 			contextId: this.contextId,

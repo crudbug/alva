@@ -178,6 +178,10 @@ export class ElementProperty {
 		return this.value;
 	}
 
+	public getSetDefault(): boolean {
+		return this.setDefault;
+	}
+
 	public getUserStoreReference(): UserStoreReference | undefined {
 		return this.userStoreReference;
 	}
@@ -193,6 +197,15 @@ export class ElementProperty {
 	@Mobx.action
 	public setValue(value: Types.ElementPropertyValue): void {
 		this.value = value;
+	}
+
+	public toDisk(): Types.SavedElementProperty {
+		return {
+			id: this.id,
+			patternPropertyId: this.patternPropertyId,
+			setDefault: this.setDefault,
+			value: this.value
+		};
 	}
 
 	public toJSON(): Types.SerializedElementProperty {

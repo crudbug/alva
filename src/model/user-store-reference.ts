@@ -64,6 +64,14 @@ export class UserStoreReference {
 		this.userStorePropertyId = b.userStorePropertyId;
 	}
 
+	public toDisk(): Types.SavedUserStoreReference {
+		return {
+			id: this.id,
+			elementPropertyId: this.elementPropertyId,
+			userStorePropertyId: this.userStorePropertyId
+		};
+	}
+
 	public toJSON(): Types.SerializedUserStoreReference {
 		return {
 			id: this.id,

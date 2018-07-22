@@ -228,6 +228,17 @@ export class ElementAction {
 		this.open = open;
 	}
 
+	public toDisk(): Types.SavedElementAction {
+		return {
+			elementPropertyId: this.elementPropertyId,
+			id: this.id,
+			payload: this.payload,
+			payloadType: this.payloadType,
+			storeActionId: this.storeActionId,
+			storePropertyId: this.storePropertyId
+		};
+	}
+
 	public toJSON(): Types.SerializedElementAction {
 		return {
 			elementPropertyId: this.elementPropertyId,

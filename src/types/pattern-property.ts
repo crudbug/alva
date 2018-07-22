@@ -4,9 +4,7 @@ export enum PatternPropertyType {
 	Enum = 'enum',
 	EventHandler = 'EventHandler',
 	Href = 'href',
-	NumberArray = 'number[]',
 	Number = 'number',
-	StringArray = 'string[]',
 	String = 'string'
 }
 
@@ -16,9 +14,7 @@ export type SerializedPatternPropertyType =
 	| 'enum'
 	| 'EventHandler'
 	| 'href'
-	| 'number[]'
 	| 'number'
-	| 'string[]'
 	| 'string';
 
 export enum PatternPropertyOrigin {
@@ -33,9 +29,7 @@ export type SerializedPatternProperty =
 	| SerializedPatternBooleanProperty
 	| SerializedPatternEnumProperty
 	| SerializedPatternEventHandlerProperty
-	| SerializedPatternNumberArrayProperty
 	| SerializedPatternNumberProperty
-	| SerializedPatternStringArrayProperty
 	| SerializedStringProperty
 	| SerializedHrefProperty;
 
@@ -118,19 +112,9 @@ export interface SerializedPatternEventHandlerProperty extends SerializedPropert
 	type: 'EventHandler';
 }
 
-export interface SerializedPatternNumberArrayProperty extends SerializedPropertyBase {
-	defaultValue: number[];
-	type: 'number[]';
-}
-
 export interface SerializedPatternNumberProperty extends SerializedPropertyBase {
 	defaultValue?: number;
 	type: 'number';
-}
-
-export interface SerializedPatternStringArrayProperty extends SerializedPropertyBase {
-	defaultValue: string[];
-	type: 'string[]';
 }
 
 export interface SerializedStringProperty extends SerializedPropertyBase {

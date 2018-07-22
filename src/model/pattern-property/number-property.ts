@@ -32,6 +32,10 @@ export class PatternNumberProperty extends PatternPropertyBase<number | undefine
 		return isNaN(result) ? undefined : result;
 	}
 
+	public toDisk(): Types.SerializedPatternNumberProperty {
+		return this.toJSON();
+	}
+
 	public toJSON(): Types.SerializedPatternNumberProperty {
 		return {
 			contextId: this.contextId,

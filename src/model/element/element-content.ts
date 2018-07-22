@@ -235,6 +235,15 @@ export class ElementContent {
 		this.setForcedOpen(false);
 	}
 
+	public toDisk(): Types.SavedElementContent {
+		return {
+			elementIds: Array.from(this.elementIds),
+			id: this.id,
+			parentElementId: this.parentElementId,
+			slotId: this.slotId
+		};
+	}
+
 	public toJSON(): Types.SerializedElementContent {
 		return {
 			elementIds: Array.from(this.elementIds),

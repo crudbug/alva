@@ -254,10 +254,12 @@ export class Page {
 		this.project = project;
 	}
 
-	public toDisk(): Types.SerializedPage {
-		const serialized = this.toJSON();
-		serialized.active = false;
-		return serialized;
+	public toDisk(): Types.SavedPage {
+		return {
+			id: this.getId(),
+			name: this.getName(),
+			rootId: this.rootId
+		};
 	}
 
 	public toJSON(): Types.SerializedPage {

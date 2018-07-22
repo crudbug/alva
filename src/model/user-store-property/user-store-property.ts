@@ -79,6 +79,15 @@ export class UserStoreProperty {
 		this.project = project;
 	}
 
+	public toDisk(): Types.SavedUserStoreProperty {
+		return {
+			id: this.id,
+			name: this.name,
+			payload: this.payload,
+			type: serializeType(this.type)
+		};
+	}
+
 	public toJSON(): Types.SerializedUserStoreProperty {
 		return {
 			id: this.id,

@@ -9,19 +9,33 @@ export enum AppState {
 export type SerializedAppState = 'starting' | 'started';
 
 export interface SavedProject {
+	elementActionIds: string[];
+	elementContentIds: string[];
+	elementIds: string[];
+	id: string;
+	name: string;
+	pageIds: string[];
+	patternLibraryIds: string[];
+	userStoreId: string;
+}
+
+export interface SerializedProject {
+	elements: SerializedElement[];
 	elementActions: SerializedElementAction[];
 	elementContents: SerializedElementContent[];
-	elements: SerializedElement[];
+	focusedItemType: SerializedItemType;
 	id: string;
 	name: string;
 	pages: SerializedPage[];
 	patternLibraries: SerializedPatternLibrary[];
+	path: string;
 	userStore: UserStore.SerializedUserStore;
-	focusedItemType: SerializedItemType;
 }
 
-export interface SerializedProject extends SavedProject {
-	path: string;
+export interface SavedPage {
+	id: string;
+	name: string;
+	rootId: string;
 }
 
 export interface SerializedPage {
@@ -33,6 +47,16 @@ export interface SerializedPage {
 }
 
 export type SerializedElementRole = 'root' | 'node';
+
+export interface SavedElement {
+	containerId?: string;
+	contentIds: string[];
+	id: string;
+	name: string;
+	patternId: string;
+	propertyIds: string[];
+	role: SerializedElementRole;
+}
 
 export interface SerializedElement {
 	containerId?: string;
@@ -51,6 +75,13 @@ export interface SerializedElement {
 	selected: boolean;
 }
 
+export interface SavedElementContent {
+	elementIds: string[];
+	id: string;
+	parentElementId?: string;
+	slotId: string;
+}
+
 export interface SerializedElementContent {
 	elementIds: string[];
 	forcedOpen: boolean;
@@ -65,6 +96,18 @@ export enum PatternLibraryState {
 	Pristine = 'pristine',
 	Connected = 'connected',
 	Disconnected = 'disconnected'
+}
+
+export interface SavedPatternLibrary {
+	bundleId: string;
+	bundle: string;
+	description: string;
+	id: string;
+	name: string;
+	origin: SerializedPatternLibraryOrigin;
+	patternPropertyIds: string[];
+	patternIds: string[];
+	state: PatternLibraryState;
 }
 
 export interface SerializedPatternLibrary {
@@ -105,6 +148,18 @@ export enum PatternOrigin {
 
 export type SerializedPatternOrigin = 'built-in' | 'user-provided';
 
+export interface SavedPattern {
+	contextId: string;
+	description: string;
+	exportName: string;
+	id: string;
+	name: string;
+	origin: SerializedPatternOrigin;
+	propertyIds: string[];
+	slotIds: string[];
+	type: SerializedPatternType;
+}
+
 export interface SerializedPattern {
 	contextId: string;
 	description: string;
@@ -116,6 +171,8 @@ export interface SerializedPattern {
 	slots: SerializedPatternSlot[];
 	type: SerializedPatternType;
 }
+
+export type SavedPatternSlot = SerializedPatternSlot;
 
 export interface SerializedPatternSlot {
 	contextId: string;
@@ -150,6 +207,8 @@ export enum SlotType {
 	Children = 'children',
 	Property = 'property'
 }
+
+export type SavedElementProperty = SerializedElementProperty;
 
 export interface SerializedElementProperty {
 	id: string;
@@ -340,6 +399,15 @@ export type ElementPropertyValue =
 	| object
 	| string
 	| string[];
+
+export interface SavedElementAction {
+	elementPropertyId: string;
+	id: string;
+	payload: string;
+	payloadType: ElementActionPayloadType;
+	storeActionId: string;
+	storePropertyId: string;
+}
 
 export interface SerializedElementAction {
 	elementPropertyId: string;

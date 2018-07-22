@@ -134,6 +134,20 @@ export class Pattern {
 		this.slots.delete(slot.getId());
 	}
 
+	public toDisk(): Types.SavedPattern {
+		return {
+			contextId: this.contextId,
+			description: this.description,
+			exportName: this.exportName,
+			id: this.id,
+			name: this.name,
+			origin: serializeOrigin(this.origin),
+			propertyIds: Array.from(this.propertyIds),
+			slotIds: this.getSlots().map(slot => slot.getId()),
+			type: serializeType(this.type)
+		};
+	}
+
 	public toJSON(): Types.SerializedPattern {
 		return {
 			contextId: this.contextId,

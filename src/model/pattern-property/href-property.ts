@@ -28,6 +28,10 @@ export class PatternHrefProperty extends PatternPropertyBase<string | undefined>
 		}
 	}
 
+	public toDisk(): Types.SerializedHrefProperty {
+		return this.toJSON();
+	}
+
 	public toJSON(): Types.SerializedHrefProperty {
 		return {
 			contextId: this.contextId,

@@ -51,6 +51,10 @@ export class PatternEventHandlerProperty extends PatternPropertyBase<string[]> {
 		return this.event;
 	}
 
+	public toDisk(): Types.SerializedPatternEventHandlerProperty {
+		return this.toJSON();
+	}
+
 	public toJSON(): Types.SerializedPatternEventHandlerProperty {
 		return {
 			contextId: this.contextId,

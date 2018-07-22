@@ -89,6 +89,10 @@ export class PatternEnumProperty extends PatternPropertyBase<EnumValue | undefin
 		return this.options;
 	}
 
+	public toDisk(): Types.SerializedPatternEnumProperty {
+		return this.toJSON();
+	}
+
 	public toJSON(): Types.SerializedPatternEnumProperty {
 		return {
 			contextId: this.contextId,

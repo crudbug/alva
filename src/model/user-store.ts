@@ -218,6 +218,16 @@ export class UserStore {
 		referenceChanges.removed.forEach(change => this.removeReference(change.before));
 	}
 
+	public toDisk(): Types.SavedUserStore {
+		return {
+			actionIds: this.getActions().map(a => a.getId()),
+			currentPagePropertyId: this.currentPageProperty.getId(),
+			id: this.id,
+			propertyIds: this.getProperties().map(p => p.getId()),
+			referenceIds: this.getReferences().map(r => r.getId())
+		};
+	}
+
 	public toJSON(): Types.SerializedUserStore {
 		return {
 			actions: this.getActions().map(a => a.toJSON()),

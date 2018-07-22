@@ -99,6 +99,7 @@ export abstract class PatternPropertyBase<T> {
 		return this.type;
 	}
 
+	public abstract toDisk(): Types.SerializedPatternProperty;
 	public abstract toJSON(): Types.SerializedPatternProperty;
 	public abstract update(patternProperty: PatternPropertyBase<T>): void;
 }

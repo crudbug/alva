@@ -361,6 +361,20 @@ export class PatternLibrary {
 		this.state = state;
 	}
 
+	public toDisk(): Types.SavedPatternLibrary {
+		return {
+			bundleId: this.bundleId,
+			bundle: this.bundle,
+			description: this.description,
+			id: this.id,
+			name: this.name,
+			origin: serializeOrigin(this.origin),
+			patternIds: this.getPatterns().map(p => p.getId()),
+			patternPropertyIds: this.getPatternProperties().map(p => p.getId()),
+			state: this.state
+		};
+	}
+
 	public toJSON(): Types.SerializedPatternLibrary {
 		return {
 			bundleId: this.bundleId,
@@ -380,7 +394,6 @@ export class PatternLibrary {
 		this.bundleId = b.bundleId;
 		this.bundle = b.bundle;
 		this.description = b.description;
-		this.id = b.id;
 		this.name = b.name;
 		this.origin = b.origin;
 		this.state = this.state;

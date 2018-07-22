@@ -30,6 +30,10 @@ export class PatternBooleanProperty extends PatternPropertyBase<boolean | undefi
 		return value === true || value === 'true' || value === 1;
 	}
 
+	public toDisk(): Types.SerializedPatternBooleanProperty {
+		return this.toJSON();
+	}
+
 	public toJSON(): Types.SerializedPatternBooleanProperty {
 		return {
 			contextId: this.contextId,

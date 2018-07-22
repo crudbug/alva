@@ -90,6 +90,16 @@ export class UserStoreAction {
 		this.userStore = userStore;
 	}
 
+	public toDisk(): Types.SavedUserStoreAction {
+		return {
+			acceptsProperty: this.acceptsProperty,
+			id: this.id,
+			name: this.name,
+			storePropertyId: this.userStorePropertyId,
+			type: serializeType(this.type)
+		};
+	}
+
 	public toJSON(): Types.SerializedUserStoreAction {
 		return {
 			acceptsProperty: this.acceptsProperty,

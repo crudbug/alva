@@ -28,6 +28,10 @@ export class PatternAssetProperty extends PatternPropertyBase<string | undefined
 		return undefined;
 	}
 
+	public toDisk(): Types.SerializedPatternAssetProperty {
+		return this.toJSON();
+	}
+
 	public toJSON(): Types.SerializedPatternAssetProperty {
 		return {
 			contextId: this.contextId,

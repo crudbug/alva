@@ -273,6 +273,10 @@ export class Project {
 		return [...this.elementContents.values()];
 	}
 
+	public getElementProperties(): ElementProperty[] {
+		return [...this.elementProperties.values()];
+	}
+
 	public getElements(): Element[] {
 		return [...this.elements.values()];
 	}
@@ -352,8 +356,16 @@ export class Project {
 		return this.patternLibraries.get(id);
 	}
 
+	public getPatternProperties(): AnyPatternProperty[] {
+		return this.patternProperties;
+	}
+
 	public getPatternPropertyById(id: string): AnyPatternProperty | undefined {
 		return this.patternProperties.find(p => p.getId() === id);
+	}
+
+	public getPatterns(): Pattern[] {
+		return this.patterns;
 	}
 
 	public getPatternSearch(): PatternSearch {
@@ -362,6 +374,10 @@ export class Project {
 
 	public getPatternSlotById(id: string): PatternSlot | undefined {
 		return this.patternSlots.find(p => p.getId() === id);
+	}
+
+	public getPatternSlots(): PatternSlot[] {
+		return this.patternSlots;
 	}
 
 	public getPreviousPage(): Page | undefined {
@@ -552,8 +568,17 @@ export class Project {
 
 	public toDisk(): Types.SavedProject {
 		const data = this.toJSON();
-		data.elements = this.getElements().map(e => e.toDisk());
-		return data;
+
+		return {
+			elementActionIds: data.elementActions.map(ea => ea.id),
+			elementContentIds: data.elementContents.map(ec => ec.id),
+			elementIds: data.elements.map(e => e.id),
+			id: data.id,
+			name: data.name,
+			pageIds: data.pages.map(p => p.id),
+			patternLibraryIds: data.patternLibraries.map(p => p.id),
+			userStoreId: data.userStore.id
+		};
 	}
 
 	public toJSON(): Types.SerializedProject {
