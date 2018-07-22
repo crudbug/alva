@@ -52,10 +52,10 @@ export class ChromeSwitch extends React.Component {
 								Option: props => (
 									<ReactSelectComponents.Option {...props}>
 										<div style={{ display: 'flex', alignItems: 'center' }}>
-											{/* tslint:disable-next-line:no-any */}
 											<Check
 												style={{
 													width: 15,
+													// tslint:disable-next-line:no-any
 													opacity: (props as any).isSelected ? 1 : 0,
 													flexShrink: 0,
 													paddingRight: 5
@@ -110,6 +110,7 @@ function getLabel(pane: Types.AppPane): string {
 		case Types.AppPane.PropertiesPane:
 			return 'Properties';
 	}
+	return '';
 }
 
 function getPane(value: string): Types.AppPane | undefined {
