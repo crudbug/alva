@@ -119,6 +119,7 @@ function createBooleanProperty(
 	ctx: PropertyAnalyzeContext
 ): Types.SerializedPatternBooleanProperty | undefined {
 	return {
+		model: Types.ModelName.PatternProperty,
 		contextId: args.symbol.name,
 		description: '',
 		example: '',
@@ -155,6 +156,7 @@ function createEnumProperty(
 	const enumId = ctx.getPropertyId(args.symbol.name);
 
 	return {
+		model: Types.ModelName.PatternProperty,
 		contextId: args.symbol.name,
 		description: '',
 		example: '',
@@ -191,6 +193,7 @@ function createNumberProperty(
 	ctx: PropertyAnalyzeContext
 ): Types.SerializedPatternNumberProperty {
 	return {
+		model: Types.ModelName.PatternProperty,
 		contextId: args.symbol.name,
 		description: '',
 		example: '',
@@ -213,6 +216,7 @@ function createStringProperty(
 	| Types.SerializedStringProperty {
 	if (TypescriptUtils.hasJsDocTagFromSymbol(args.symbol, 'asset')) {
 		return {
+			model: Types.ModelName.PatternProperty,
 			contextId: args.symbol.name,
 			description: '',
 			example: '',
@@ -228,6 +232,7 @@ function createStringProperty(
 
 	if (TypescriptUtils.hasJsDocTagFromSymbol(args.symbol, 'href')) {
 		return {
+			model: Types.ModelName.PatternProperty,
 			contextId: args.symbol.name,
 			description: '',
 			example: '',
@@ -242,6 +247,7 @@ function createStringProperty(
 	}
 
 	return {
+		model: Types.ModelName.PatternProperty,
 		contextId: args.symbol.name,
 		description: '',
 		example: '',
@@ -262,6 +268,7 @@ function createEventHandlerProperty(
 	const eventType = ReactUtils.getEventType(args, { typechecker: ctx.program.getTypeChecker() });
 
 	return {
+		model: Types.ModelName.PatternProperty,
 		contextId: args.symbol.name,
 		description: '',
 		example: '',
