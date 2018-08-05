@@ -17,6 +17,8 @@ export interface PatternPropertyInit<T> {
 }
 
 export abstract class PatternPropertyBase<T> {
+	public readonly model = Types.ModelName.PatternProperty;
+
 	@Mobx.observable protected contextId: string;
 	@Mobx.observable protected defaultValue: T;
 	@Mobx.observable protected description: string;
@@ -100,7 +102,9 @@ export abstract class PatternPropertyBase<T> {
 	}
 
 	public abstract toJSON(): Types.SerializedPatternProperty;
-	public abstract update(patternProperty: PatternPropertyBase<T>): void;
+	public abstract update(
+		patternProperty: PatternPropertyBase<T> | Types.SerializedPatternProperty
+	): void;
 }
 
 export function deserializeOrigin(
